@@ -1,0 +1,22 @@
+network:
+  version: 2
+  ethernets:
+    # interface name
+    enp1s0:
+      # no dhcp4
+      dhcp4: false
+      # IP address/subnet mask
+      addresses: [10.0.0.30/24]
+      # default gateway
+      # [metric] : set priority (specify it if multiple NICs are set)
+      # lower value has higher priority
+      routes:
+        - to: default
+          via: 10.0.0.1
+          metric: 100
+      nameservers:
+        # name server to bind
+        addresses: [10.0.0.10,10.0.0.11]
+        # DNS search base (domain names)
+        search: [srv.world,server.education]
+      dhcp6: false
